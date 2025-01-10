@@ -49,3 +49,5 @@ def fire_detector():
 
         # cv2.imshow('frame',frame)
         cv2.waitKey(1)
+
+# fire_detector()
