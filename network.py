@@ -2,11 +2,21 @@ import time
 import socket
 
 
+
+HOST = "13.247.60.143"
+PORT = 80
+
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+# client_socket.settimeout(1.0)
+addr = (HOST, PORT)
+
+def send_temperature(value):
+    client_socket.sendto(value.to_bytes(2, 'little'), addr)
+
+    
+
 def call_server(confidence: int):
     if confidence > 50:
-        client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        # client_socket.settimeout(1.0)
-        addr = ("13.247.60.143", 80)
         print("confidence : ", confidence)
         # print("confidence : in bytes", bytes(confidence))
         time.sleep(0.3)
